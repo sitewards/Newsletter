@@ -1,0 +1,10 @@
+{
+	"name": "sitewards/newsletter",
+	"license": "OSL-3.0",
+	"type": "magento-module",
+	"description": "Extends newsletter functionality according to German law.",
+	"homepage": "http://www.sitewards.com",
+	"require": {
+		"magento-hackathon/magento-composer-installer": "*"
+	}
+}

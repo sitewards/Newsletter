@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * @category    Sitewards
+ * @package     Sitewards_Newsletter
+ * @copyright   Copyright (c) 2013 Sitewards GmbH (http://www.sitewards.com/)
+ */
+-->
+<config>
+    <modules>
+        <Sitewards_Newsletter>
+            <version>1.0.0</version>
+        </Sitewards_Newsletter>
+    </modules>
+    <global>
+        <helpers>
+            <sitewards_newsletter>
+                <class>Sitewards_Newsletter_Helper</class>
+            </sitewards_newsletter>
+        </helpers>
+        <models>
+            <sitewards_newsletter>
+                <class>Sitewards_Newsletter_Model</class>
+            </sitewards_newsletter>
+            <newsletter>
+                <rewrite>
+                    <subscriber>Sitewards_Newsletter_Model_Subscriber</subscriber>
+                </rewrite>
+            </newsletter>
+        </models>
+        <events>
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <sitewards_newsletter>
+                        <class>sitewards_newsletter/observer</class>
+                        <method>saveOrderAfter</method>
+                    </sitewards_newsletter>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+        </events>
+    </global>
+    <default>
+        <newsletter>
+            <subscription>
+                <confirm>1</confirm>
+            </subscription>
+        </newsletter>
+    </default>
+    <frontend>
+        <layout>
+            <updates>
+                <sitewards_newsletter>
+                    <file>sitewards/newsletter.xml</file>
+                </sitewards_newsletter>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <sitewards_newsletter>
+                    <files>
+                        <default>Sitewards_Newsletter.csv</default>
+                    </files>
+                </sitewards_newsletter>
+            </modules>
+        </translate>
+    </frontend>
+</config>

@@ -1,0 +1,5 @@
+/app/code/community/Sitewards/Newsletter /app/code/community/Sitewards/Newsletter
+/app/etc/modules/Sitewards_Newsletter.xml /app/etc/modules/Sitewards_Newsletter.xml
+/app/locale/de_DE/Sitewards_Newsletter.csv /app/locale/de_DE/Sitewards_Newsletter.csv
+/app/design/frontend/base/default/layout/sitewards/newsletter.xml /app/design/frontend/base/default/layout/sitewards/newsletter.xml
+/app/design/frontend/base/default/template/sitewards/newsletter /app/design/frontend/base/default/template/sitewards/newsletter

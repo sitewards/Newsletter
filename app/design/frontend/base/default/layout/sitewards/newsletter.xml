@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ *
+ * @category    Sitewards
+ * @package     Sitewards_Newsletter
+ * @copyright   Copyright (c) 2013 Sitewards GmbH (http://www.sitewards.com/)
+ */
+-->
+<layout version="0.1.0">
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.agreements">
+            <action method="setTemplate"><template>sitewards/newsletter/checkout/onepage/agreements.phtml</template></action>
+        </reference>
+    </checkout_onepage_review>
+</layout>

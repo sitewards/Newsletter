@@ -1,0 +1,27 @@
+<?php $oNewsletterHelper = Mage::helper('sitewards_newsletter');?>
+<form action="" id="checkout-agreements" onsubmit="return false;">
+    <ol class="checkout-agreements">
+        <?php foreach ($this->getAgreements() as $_a): ?>
+            <li>
+                <div class="agreement-content"<?php echo ($_a->getContentHeight() ? ' style="height:' . $_a->getContentHeight() . '"' : '')?>>
+                    <?php if ($_a->getIsHtml()):?>
+                        <?php echo $_a->getContent() ?>
+                    <?php else:?>
+                        <?php echo nl2br($this->escapeHtml($_a->getContent())) ?>
+                    <?php endif; ?>
+                </div>
+                <p class="agree">
+                    <input type="checkbox" id="agreement-<?php echo $_a->getId()?>" name="agreement[<?php echo $_a->getId()?>]" value="1" title="<?php echo $this->escapeHtml($_a->getCheckboxText()) ?>" class="checkbox" /><label for="agreement-<?php echo $_a->getId()?>"><?php echo $_a->getIsHtml() ? $_a->getCheckboxText() : $this->escapeHtml($_a->getCheckboxText()) ?></label>
+                </p>
+            </li>
+        <?php endforeach ?>
+        <?php if ($oNewsletterHelper->isSubscribed()): ?>
+            <input type="hidden" name="is_subscribed" value="1" />
+        <?php else: ?>
+            <li>
+                <input type="checkbox" id="is_subscribed" name="is_subscribed" value="1" title="<?php echo $oNewsletterHelper->__('I would like to be informed about the latest offers, promotions and news via e-mail. I can withdraw my consent at any time.') ?>" class="checkbox" />
+                <label for="is_subscribed"><?php echo $oNewsletterHelper->__('I would like to be informed about the latest offers, promotions and news via e-mail. I can withdraw my consent at any time.') ?></label>
+            </li>
+        <?php endif; ?>
+    </ol>
+</form>
