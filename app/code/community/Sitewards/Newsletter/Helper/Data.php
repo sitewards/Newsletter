@@ -26,7 +26,7 @@ class Sitewards_Newsletter_Helper_Data extends Mage_Core_Helper_Abstract
             ->getEmail();
         $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
 
-        $bShowSubscribingCheckbox = in_array(
+        $bSubscriptionExists = in_array(
             $subscriber->getStatus(),
             array(
                 Mage_Newsletter_Model_Subscriber::STATUS_SUBSCRIBED,
@@ -34,10 +34,6 @@ class Sitewards_Newsletter_Helper_Data extends Mage_Core_Helper_Abstract
                 Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE
             )
         );
-        if ($subscriber->getId() && $bShowSubscribingCheckbox) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($subscriber->getId() && $bSubscriptionExists);
     }
 }

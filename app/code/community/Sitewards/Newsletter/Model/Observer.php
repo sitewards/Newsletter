@@ -18,7 +18,7 @@ class Sitewards_Newsletter_Model_Observer
      */
     public function saveOrderAfter(Varien_Event_Observer $oObserver)
     {
-        /* @var $oOrder Mage_Sales_Model_Order */
+        /* @var Mage_Sales_Model_Order $oOrder */
         $oOrder = $oObserver->getData('order');
 
         $oRequest = Mage::app()->getRequest();
@@ -32,7 +32,7 @@ class Sitewards_Newsletter_Model_Observer
                 $oCustomer->save();
             } else {
                 $sEmailAddress = $oOrder->getCustomerEmail();
-                /* @var $oNewsletterSubscriber Mage_Newsletter_Model_Subscriber */
+                /* @var Mage_Newsletter_Model_Subscriber $oNewsletterSubscriber */
                 $oNewsletterSubscriber = Mage::getModel('newsletter/subscriber');
                 $oNewsletterSubscriber->subscribe($sEmailAddress);
             }

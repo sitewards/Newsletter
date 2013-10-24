@@ -47,12 +47,15 @@ class Sitewards_Newsletter_Model_Subscriber extends Mage_Newsletter_Model_Subscr
 
         $bSendInformationEmail = false;
         if ($oCustomer->hasIsSubscribed()) {
-            $iCustomerStatus = $oCustomer->getIsSubscribed()
-                ? (($this->getStatus() == self::STATUS_SUBSCRIBED)
-                    ? self::STATUS_SUBSCRIBED
-                    : self::STATUS_UNCONFIRMED
-                )
-                : self::STATUS_UNSUBSCRIBED;
+
+            if ($oCustomer->getIsSubscribed() && ($this->getStatus() == self::STATUS_SUBSCRIBED)) {
+                $iCustomerStatus = self::STATUS_SUBSCRIBED;
+            } elseif ($oCustomer->getIsSubscribed() && ($this->getStatus() != self::STATUS_SUBSCRIBED)) {
+                $iCustomerStatus = self::STATUS_UNCONFIRMED;
+            } else {
+                $iCustomerStatus = self::STATUS_UNSUBSCRIBED;
+            }
+
             /**
              * If subscription status has been changed then send email to the customer
              */
